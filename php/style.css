@@ -1,0 +1,16 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing: border-box;
+}
+body{
+    background-color: #182d3d;
+}
+header{
+    background-color: #132431;
+}
+header img{
+    width: 60px;
+    padding: 10px 0;
+    margin-left: 15%;
+}
