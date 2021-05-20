@@ -10,12 +10,11 @@
     <!-- font -->
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,500;1,300&display=swap" rel="stylesheet">
+    <!-- vue -->
+    <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
 </head>
 <body>
-   <?php
-        include __DIR__ . './script.php';
-        //var_dump($database);
-    ?>
+
     <div class="app">
         <!-- header -->
         <header>
@@ -25,17 +24,19 @@
         <div class="container">
             <!-- disco -->
             
-                <?php foreach($database as $card){ ?>
-                    <div class="card">
-                    <img src="<?php echo $card['poster']; ?>" alt="">
-                    <h3> <?php echo $card['title']; ?> </h3>
-                    <p> <?php echo $card['author']; ?> </p>
-                    <h3> <?php echo $card['year']; ?> </h3>
-                    <p> <?php echo $card['genre']; ?> </p>
-                    </div>
-                <?php } ?>
+            <div class="card" v-for = "disco in dischi">
+                <img :src="disco.poster" alt="">
+                <h3>{{disco.title}}</h3>
+                <p>{{disco.author}}</p>
+                <h3>{{disco.year}}</h3>
+                <p>{{disco.genre}}</p>
+
+            </div>
                 
         </div>
     </div>
+<!-- js -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="./script.js"></script>
 </body>
 </html>
