@@ -26,11 +26,10 @@
             
             <div class="card" v-for = "disco in dischi">
                 <img :src="disco.poster" alt="">
-                <h3>{{disco.title}}</h3>
+                <h4>{{disco.title}}</h4>
                 <p>{{disco.author}}</p>
-                <h3>{{disco.year}}</h3>
+                <h4>{{disco.year}}</h4>
                 <p>{{disco.genre}}</p>
-
             </div>
                 
         </div>
