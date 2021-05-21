@@ -19,12 +19,19 @@
         <!-- header -->
         <header>
             <img src="./php-dischi/logo.png" alt="">
+            <div>
+                <label for="music">Filter by author</label>
+                <select v-model = "selected" @change = "takeData()"  name="music" id="music">
+                    <option value = "all">all</option>
+                    <option v-for = "disco in dischi"  :value = "disco.author">{{disco.author}}</option>
+                </select>
+            </div>
         </header>
         <!-- main -->
         <div class="container">
             <!-- disco -->
             
-            <div class="card" v-for = "disco in dischi">
+            <div class="card" v-for = "disco in filteredDischi">
                 <img :src="disco.poster" alt="">
                 <h4>{{disco.title}}</h4>
                 <p>{{disco.author}}</p>

@@ -13,10 +13,15 @@ header{
     height: 80px;
     display: flex;
     align-items: center;
+    justify-content: space-between;
+    padding: 0 8%;
 }
 header img{
     width: 60px;
-    margin-left: 8%;
+}
+label{
+    color:white;
+    margin-right: 5px;
 }
 /* main */
 .container{
