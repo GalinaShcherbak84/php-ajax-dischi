@@ -2,11 +2,11 @@ const app = new Vue({
     el: '.app',
     data:{
         dischi:[],
-        selected:'all',
+        selected:' ',
         filteredDischi:[],
     },
-    created(){
-        const dataURL = 'http://localhost:81/php-ajax-dischi/ajax/script.php';
+    mounted(){
+        const dataURL = "http://localhost:81/php-ajax-dischi/ajax/script.php/";
         axios.get(dataURL)
         .then(result =>{
             console.log(result.data);
@@ -16,8 +16,9 @@ const app = new Vue({
             console.log(err);
         });
     },
-    methods:{
+    computed:{
         takeData(){
+            //console.log(this.selected);
             this.filteredDischi = this. dischi.filter(disco=>{
                 if(this.selected !== 'all'){
                     return disco.author === this.selected;

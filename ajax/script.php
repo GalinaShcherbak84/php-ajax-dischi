@@ -1,5 +1,7 @@
 <?php
-
+    /* $author = $_GET['author'];
+    echo $author;
+    $datoFiltrato = [];  */
     $database = [
         [
             'title' => 'New Jersey',
@@ -44,6 +46,21 @@
             'genre' => 'Rock'
         ]
     ];
-header('Content-Type: application/json');
-echo json_encode($database)
+     /* if(empty($author)){
+        header('Content-Type: application/json');
+        echo json_encode($database);  
+    }
+    else{
+        foreach($database as $disco){
+            if($disco['author']=== ucfirst($author)){
+                $datoFiltrato['disco'] = $disco;
+               // var_dump($datoFiltrato);
+               header('Content-Type: application/json');
+                echo json_encode($datoFiltrato);  
+            }
+        }
+    }  */
+    header('Content-Type: application/json');
+    echo json_encode($database);  
+
 ?>
