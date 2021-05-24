@@ -21,9 +21,9 @@
             <img src="./php-dischi/logo.png" alt="">
             <div>
                 <label for="music">Filter by author</label>
-                <select v-model = "selected" @change = 'takeData()' name="music" id="music">
+                <select v-model = "selected" @change = 'takeData' name="music" id="music">
                     <option value = "all">all</option>
-                    <option v-for = "disco in dischi"  :value = "disco.author">{{disco.author}}</option>
+                    <option v-for = "artist in artists"  :value = "artist">{{artist}}</option>
                 </select>
             </div>
         </header>
@@ -31,7 +31,7 @@
         <div class="container">
             <!-- disco -->
            
-            <div class="card" v-for = "disco in filteredDischi">
+            <div class="card" v-for = "disco in albums">
                 <img :src="disco.poster" alt="">
                 <h4>{{disco.title}}</h4>
                 <p>{{disco.author}}</p>

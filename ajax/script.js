@@ -1,31 +1,38 @@
 const app = new Vue({
     el: '.app',
     data:{
-        dischi:[],
-        selected:' ',
-        filteredDischi:[],
+        albums:[],
+        selected:'all',
+        artists:[],
     },
-    mounted(){
+    created(){
         const dataURL = "http://localhost:81/php-ajax-dischi/ajax/script.php/";
         axios.get(dataURL)
         .then(result =>{
             console.log(result.data);
-            this.dischi = result.data;
+            this.albums = result.data.albums;
+            console.log(this.albums);
+            this.artists= result.data.artists;
+            console.log(this.artists);
         })
         .catch(err => {
             console.log(err);
         });
     },
-    computed:{
+    methods:{
         takeData(){
-            //console.log(this.selected);
-            this.filteredDischi = this. dischi.filter(disco=>{
-                if(this.selected !== 'all'){
-                    return disco.author === this.selected;
-                }else{
-                    return disco
+            axios.get('http://localhost:81/php-ajax-dischi/ajax/script.php/',
+                {
+                    params:{
+                        artist:this.selected,
+                    },
                 }
-                
+            )
+                .then(result =>{
+                this.albums = result.data.albums;
+            })
+                .catch(err => {
+                console.log(err);
             });
         }
     }

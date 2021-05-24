@@ -1,7 +1,6 @@
 <?php
-    /* $author = $_GET['author'];
-    echo $author;
-    $datoFiltrato = [];  */
+    $artist = empty($_GET['artist']) ? false : $_GET['artist'];
+    $artists =[];
     $database = [
         [
             'title' => 'New Jersey',
@@ -46,21 +45,29 @@
             'genre' => 'Rock'
         ]
     ];
-     /* if(empty($author)){
-        header('Content-Type: application/json');
-        echo json_encode($database);  
+    // GET ALBUMS
+    $albums = [];
+    if($artist== false||$artist=='all'){
+        $albums=$database;
+    }else{
+         foreach($database as $album){
+             if($album['author'] == $artist){
+                $albums[]=$album;
+             }
+         }
     }
-    else{
-        foreach($database as $disco){
-            if($disco['author']=== ucfirst($author)){
-                $datoFiltrato['disco'] = $disco;
-               // var_dump($datoFiltrato);
-               header('Content-Type: application/json');
-                echo json_encode($datoFiltrato);  
-            }
+     // GET ARTISTS
+     foreach($database as $album){
+        if(! in_array($album['author'], $artists)){
+           $artists[]=$album['author'];
         }
-    }  */
+    }
+    //FINAL RESULT
+    $results = [
+        'albums' => $albums,
+        'artists' => $artists,
+    ];
     header('Content-Type: application/json');
-    echo json_encode($database);  
+    echo json_encode($results); 
 
 ?>
